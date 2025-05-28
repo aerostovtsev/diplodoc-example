@@ -2,3 +2,7 @@ langs: ['ru', 'en']
 
 docs-viewer:
   langs: ['en','ru']
+search:
+  provider: local
+  tolerance: 2
+  confidense: phrased
