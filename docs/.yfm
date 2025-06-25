@@ -1,4 +1,5 @@
 allowHTML: true
+root: /diplodoc-example/
 addSystemMeta: true
 search:
   provider: local
