@@ -30,19 +30,15 @@ jobs:
           node-version: '20.x' # Убедитесь, что здесь стоит 20.x или 22.x
 
       - name: Install Diplodoc CLI and search extension
-        id: install_diplodoc
         run: |
           npm install -g @diplodoc/cli
           npm install -g @diplodoc/search-extension
-          # Новое решение: Получаем путь к глобальным модулям и затем к исполняемому файлу
-          GLOBAL_NPM_ROOT=$(npm root -g)
-          echo "DIPLOC_PATH=$GLOBAL_NPM_ROOT/@diplodoc/cli/bin/diplodoc" >> $GITHUB_OUTPUT # <-- ИЗМЕНЕНИЕ ЗДЕСЬ!
         shell: bash
 
       - name: Build docs
         run: |
-          # Используем сохраненный полный путь к diplodoc
-          ${{ steps.install_diplodoc.outputs.DIPLOC_PATH }} build --input ./docs --output ./docs-html
+          # Используем npx для вызова diplodoc
+          npx diplodoc build --input ./docs --output ./docs-html # <-- ИЗМЕНЕНИЕ ЗДЕСЬ!
         shell: bash
         env:
           NODE_OPTIONS: "--max-old-space-size=4096"
