@@ -24,31 +24,28 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup Node.js 20.x # ⬅️ Шаг для установки Node.js 20.x
+      - name: Setup Node.js 20.x
         uses: actions/setup-node@v4
         with:
-          node-version: '20.x' # Важно: используем 20.x или 22.x для совместимости
+          node-version: '20.x' # Убедитесь, что здесь стоит 20.x или 22.x
 
-      - name: Install Diplodoc CLI and search extension # ⬅️ Устанавливаем CLI и search-extension
+      - name: Install Diplodoc CLI and search extension
         run: |
           npm install -g @diplodoc/cli
-          npm install -g @diplodoc/search-extension # Установка search-extension глобально
+          npm install -g @diplodoc/search-extension
+          echo "::add-path::$(npm bin -g)" # <-- ЭТО ВАЖНАЯ СТРОКА! Добавляем глобальные бинарники в PATH
+        shell: bash # Убедимся, что это выполняется в bash
 
-      - name: Build docs # ⬅️ Запускаем сборку Diplodoc
+      - name: Build docs
         run: |
-          # Убедитесь, что 'diplodoc build' - это правильная команда для сборки вашей документации.
-          # Также укажите правильные пути для src-root и build-root, как вы делали раньше.
           diplodoc build --input ./docs --output ./docs-html
         env:
-          # Если у вас есть переменные окружения, которые Diplodoc использует (например, для API ключей)
-          # DO_NOT_TRACK: 1 # Пример
-          # DIPLODOC_TOKEN: ${{ secrets.DIPLODOC_API_TOKEN }} # Пример использования секрета
-          NODE_OPTIONS: "--max-old-space-size=4096" # Может помочь для больших проектов
+          NODE_OPTIONS: "--max-old-space-size=4096"
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: './docs-html' # Путь к сгенерированной документации
+          path: './docs-html'
 
       - name: Deploy to GitHub Pages
         id: deployment
