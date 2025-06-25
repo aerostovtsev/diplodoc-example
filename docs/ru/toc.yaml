@@ -1,5 +1,4 @@
 title: Шаблон проекта документации
-href: index.yaml
 items:
   - name: О проекте
     href: about.md
@@ -20,16 +19,3 @@ navigation:
     light:
       icon: "https://storage.yandexcloud.net/diplodoc-www-assets/navigation/diplodoc-logo.svg"
       text: "Diplodoc"
-  header:
-    leftItems:
-      - text: "Relative Link"
-        type: "link"
-        url: "./ru/settings"
-      - text: "Absolute Link"
-        type: "link"
-        url: "https://diplodoc.com/docs/ru/project/"
-    rightItems:
-      - text: "Other Link"
-        type: "link"
-        url: "ru/contribution"
-      - type: controls
