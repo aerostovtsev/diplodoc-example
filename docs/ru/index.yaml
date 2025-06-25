@@ -1,6 +1,5 @@
-href: index.md
+title: Documentation Template
 links:
-  - title: РАЗДЕЛ
   - title: О проекте
     href: about.md
   - title: Страница Diplodoc на главной странице

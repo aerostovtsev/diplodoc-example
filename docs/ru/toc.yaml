@@ -1,6 +1,7 @@
 title: Шаблон проекта документации
-href: index.yaml
+href: doc.md
 items:
+  - name: РАЗДЕЛ
   - name: О проекте
     href: about.md
   - name: Дополнительная страница
