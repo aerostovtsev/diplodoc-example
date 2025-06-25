@@ -58,7 +58,7 @@ function createBreadcrumbsMap(toc, options) {
         var _a;
         const breadcrumbItem = { name: item.name };
         if (item.href) {
-            breadcrumbItem.url = (0, utils_1.setExt)(item.href, '');
+            breadcrumbItem.url = (0, utils_1.setExt)(item.href.replace(/\.yaml$/, ''), '');
         }
         if (breadcrumbItem.url) {
             breadcrumbsMap.set(breadcrumbItem.url, [...currentPath, breadcrumbItem]);
