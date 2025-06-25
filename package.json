@@ -33,7 +33,7 @@
   "scripts": {
     "postinstall": "patch-package",
     "start": "npm run build:docs && node scripts/serve.js",
-    "build:docs": "yfm --input docs --output docs-html"
+    "build:docs": "yfm --input docs --output docs-html --root /diplodoc-example/"
   },
   "dependencies": {
     "@diplodoc/client": "^3.4.3",
