@@ -33,7 +33,8 @@ jobs:
         run: |
           npm install -g @diplodoc/cli
           npm install -g @diplodoc/search-extension
-          echo "::add-path::$(npm bin -g)" # <-- ЭТО ВАЖНАЯ СТРОКА! Добавляем глобальные бинарники в PATH
+          # Новое решение: добавляем глобальные бинарники в PATH через $GITHUB_PATH
+          echo "$(npm bin -g)" >> $GITHUB_PATH # <-- ИЗМЕНЕНИЕ ЗДЕСЬ!
         shell: bash # Убедимся, что это выполняется в bash
 
       - name: Build docs
