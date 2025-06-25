@@ -14,5 +14,7 @@ vcsControl:
   url: "https://git.example.ru/{path}"
   type: "github"
 feedbackControl: true
-breadcrumbs: true
+breadcrumbs:
+  tocAsRoot: false
+  appendLabeled: true
 cleanLinks: true
