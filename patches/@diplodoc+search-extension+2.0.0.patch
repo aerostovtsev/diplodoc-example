@@ -1,0 +1,13 @@
+diff --git a/node_modules/@diplodoc/search-extension/lib/indexer/index.js b/node_modules/@diplodoc/search-extension/lib/indexer/index.js
+index 124a7a2..d82868e 100644
+--- a/node_modules/@diplodoc/search-extension/lib/indexer/index.js
++++ b/node_modules/@diplodoc/search-extension/lib/indexer/index.js
+@@ -600,7 +600,7 @@ var LocalSearchProvider = class {
+     return (0, import_node_path.join)(this.outputDir, lang30, `${hash2}-registry.js`);
+   }
+   languageLink(lang30) {
+-    if (!langs.includes(lang30)) {
++    if (!langs[lang30]) {
+       return "";
+     }
+     return (0, import_node_path.join)(this.outputDir, lang30, `language.js`);

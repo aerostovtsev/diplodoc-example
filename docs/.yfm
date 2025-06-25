@@ -1,8 +1,18 @@
-langs: ['ru', 'en']
-
-docs-viewer:
-  langs: ['en','ru']
+allowHTML: true
+addSystemMeta: true
 search:
   provider: local
   tolerance: 2
   confidense: phrased
+extensions:
+  - "@diplodoc/search-extension"
+  - "./extensions/vcs-control"
+  - "./extensions/feedback-control"
+  - "./extensions/breadcrumbs"
+  - "./extensions/clean-links"
+vcsControl:
+  url: "https://git.example.ru/{path}"
+  type: "github"
+feedbackControl: true
+breadcrumbs: true
+cleanLinks: true

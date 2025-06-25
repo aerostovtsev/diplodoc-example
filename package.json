@@ -31,11 +31,14 @@
   "license": "MIT",
   "main": "scripts/serve.js",
   "scripts": {
+    "postinstall": "patch-package",
     "start": "npm run build:docs && node scripts/serve.js",
     "build:docs": "yfm --input docs --output docs-html"
   },
   "dependencies": {
-    "@diplodoc/cli": "^4.55.1",
+    "@diplodoc/client": "^3.4.3",
+    "@diplodoc/components": "^4.28.2",
+    "@diplodoc/search-extension": "^2.0.1",
     "chokidar": "^3.5.3",
     "express": "^4.18.2",
     "glob": "^10.3.4",
@@ -43,6 +46,10 @@
     "open": "^8.4.2",
     "parse5": "^7.1.2",
     "parse5-utils": "^2.0.0",
+    "patch-package": "^8.0.0",
     "serve-static": "^1.15.0"
+  },
+  "devDependencies": {
+    "@diplodoc/cli": "^5.0.5"
   }
 }
