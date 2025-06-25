@@ -27,20 +27,22 @@ jobs:
       - name: Setup Node.js 20.x
         uses: actions/setup-node@v4
         with:
-          node-version: '20.x' # Ensure this is 20.x or 22.x
+          node-version: '20.x'
 
       - name: Install Diplodoc CLI and search extension
+        id: install_diplodoc # Добавляем ID для этого шага
         run: |
           npm install -g @diplodoc/cli
           npm install -g @diplodoc/search-extension
+          # Получаем полный путь к исполняемому файлу diplodoc и сохраняем его
+          echo "DIPLOC_PATH=$(npm bin -g)/diplodoc" >> $GITHUB_OUTPUT
         shell: bash
 
       - name: Build docs
         run: |
-          # Add the global npm bin path to PATH for this command only
-          export PATH="$(npm bin -g):$PATH"
-          diplodoc build --input ./docs --output ./docs-html
-        shell: bash # Ensure bash is used here for 'export' and '$(npm bin -g)'
+          # Используем сохраненный полный путь к diplodoc
+          ${{ steps.install_diplodoc.outputs.DIPLOC_PATH }} build --input ./docs --output ./docs-html
+        shell: bash
         env:
           NODE_OPTIONS: "--max-old-space-size=4096"
 
